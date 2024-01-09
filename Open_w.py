@@ -3,11 +3,16 @@
 file = open('i love python.txt', 'w', encoding= 'utf-8')
 file.write('Hello, world!\n')
 file.write('Welcome to Python!!\n')
-file.close() # file.close()¸¦ ¾È¾²¸é ÇÁ·Î±×·¥ÀÌ Á¾·áµÉ¶§±îÁö ÇØ´ç ÆÄÀÏ¿¡ ¼öÁ¤ ºÒ°¡´É
+file.close() # file.close()ï¿½ï¿½ ï¿½È¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½
 
 # r(read)
-file = open('i love python.txt', 'r', encoding= 'utf-8')
+file = open('i love python.txt', 'r')
 data = file.read()
 print(data)
-# ÆÄÀÏÀ» ÀÐ¾î µé¿©¼­ data¶ó´Â º¯¼ö¿¡ ÀúÀåÈÄ data º¯¼ö¸¦ Ãâ·ÂÇÏ´Â ±âº»ÀûÀÎ ±¸Á¶
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ ï¿½é¿©ï¿½ï¿½ dataï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ data ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+file.close()
+
+# a ì´ì–´ì“°ê¸°
+file= open('i love python.txt', 'a')
+file.write("Hello")
 file.close()
