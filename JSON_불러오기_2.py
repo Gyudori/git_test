@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 import json
 
-## JSON ÆÄÀÏ ÀúÀåÇÏ±â 
+## JSON ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ 
 oecd_cnty = {
-    'AUS' : 'È£ÁÖ',
-    'AUT' : '¿À½ºÆ®¸®¾Æ',
-    'BEL' : 'º§±â¿¡'
-    } # °è¼Ó À¯´ÏÄÚµå ¿¡·¯ ¹ß»ı ¾î¶»°Ô ÇØ°áÇØ¾ß ÇÏ´ÂÁö?
+    "AUS" : "í˜¸ì£¼",
+    "AUT" : "ì˜¤ìŠ¤íŠ¸ë¦¬ì•„",
+    "BEL" : "ë²¨ê¸°ì—"
+    }
 
-## µñ¼Å³Ê¸®¸¦ json ÆÄÀÏ·Î ÀúÀåÇÏ±â À§ÇØ °æ·Î¸¦ ¼³Á¤.
-#file_path = 'oecd_cnty.json'
-#
-## µñ¼Å³Ê¸®¸¦ file_path¿¡ ¸Â°Ô .json ÆÄÀÏ·Î ÀúÀåÇÏ´Â ÄÚµå.
-#with open(file_path, 'w', encoding='cp949') as f:
-#    json.dump(oecd_cnty, f)
-#    
-### JSON ÆÄÀÏ ºÒ·¯¿À±â
-#with open(file_path, 'r') as f:
-#    oecd_cnty=json.load(f, encoding='cp949')
-#    # oecd_cnty=json.load(f, encoding='cp949')
+
+file_path = "oecd_cnty.json"
+
+
+with open(file_path, "w", encoding="cp949") as f:
+    json.dump(oecd_cnty, f)
+    
+
+with open(file_path, "r", encoding='cp949') as f:
+    oecd_cnty=json.load(f)
+    # oecd_cnty=json.load(f, encoding="cp949")
+print(oecd_cnty)
