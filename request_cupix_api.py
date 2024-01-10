@@ -10,9 +10,10 @@ api_url= 'https://cupix.cupix.works/api/v1/'
 
 headers = {
     "X-Cupix-Auth" : "eyJraWQiOiJieDJJNzFWVFAxZkI1elk1eUVyZFFVMkRpSUJ0V3RoUG81WllhQnE0QkpZPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiZmViNzc5YWQtZmM2YS00YzVjLWE3OTgtZDdkNjcwYzRlNTgyIiwic3ViIjoiZjU4OTVkNTUtMjBiNi00MDQ2LTlmN2ItMDI4YmZlNDllNGRmIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTcwNDc3MDAyMiwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfa3BQS1lzejhRIiwiZXhwIjoxNzA0NzczNjIyLCJpYXQiOjE3MDQ3NzAwMjIsImp0aSI6ImFhNTFiYThmLWJiNTgtNGMzYy04OTQ3LTU2NDdlZDA5OGViNCIsImNsaWVudF9pZCI6IjdkZDdoMTVhcGk1aXIxbHZxdGk1azluZnJvIiwidXNlcm5hbWUiOiJmNTg5NWQ1NS0yMGI2LTQwNDYtOWY3Yi0wMjhiZmU0OWU0ZGYifQ.rB6NP7EeNA25rzHhj0nEuXlZ7AK7TTtOI_TcwxwExBYtkGDXPgFxijnGJgVqNntJIt4tkApYAu3mvhJzdiLoTI95d2LPqr6vCfjay_vjt5V2VM3fmVuGAsI6Mzm6N7pgDKssGtTkra3B0EOOAIW9CYSuKGPSFbEVxGiDVKz4HLwni_Ek_lRHKH8Q5txJac4XtMvjDMFhSopIL54e9WUfKL2nn8xWgT8_moTR53YNDbhAmK3BTKG6_qdRJgUPN00UjhTXdhD8hTVCka08HdTfZ-IkmyeUzz2PN-GPMNBAWHsBQjerzGkvfcTTUKVN58Qav66tS0lQuSpy-TMTmcE0ig"
-}
+} ## 토큰 줄바꿈 (\) 안되는지? 줄바꿈 하면 400에러 발생함
 
-capture_id = '283844'
+capture_id = input("capture id:")
+capture_id = int(capture_id) # str > int 처리
 fields = 'id'
 
 get_clusters_api_url = api_url + "clusters" + "?capture_id=" + capture_id + "&fields=" + fields
@@ -33,5 +34,5 @@ wp_dir_name.mkdir(parents=True, exist_ok=True)
 
 destination_folder = wp_dir_name
 
-# JSON ?뙆?씪 ?씠?룞 ?븿?닔 ?샇異?
+
 shutil.move(destination_folder)
