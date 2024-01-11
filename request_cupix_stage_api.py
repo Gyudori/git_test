@@ -8,40 +8,56 @@ import json
 
 path = 'request_test'
 
+domain = 'noahtest'
+
+region = 'eu'
+
+#api_url= f'https://{region}.{domain}.stage.cupix.works/api/v1/'
+
 api_url= 'https://noahtest.stage.cupix.works/api/v1/'
 
-headers = {
-    "X-Cupix-Auth" : "eyJraWQiOiJieDJJNzFWVFAxZkI1elk1eUVyZFFVMkRpSUJ0V3RoUG81WllhQnE0QkpZPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiYzZmN2Q5YjgtNGY3MC00NDA0LTgxNWUtYTg3NGU4MzU1OWZiIiwic3ViIjoiZjU4OTVkNTUtMjBiNi00MDQ2LTlmN2ItMDI4YmZlNDllNGRmIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTcwNDg1MDM2NSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfa3BQS1lzejhRIiwiZXhwIjoxNzA0ODU5NTI2LCJpYXQiOjE3MDQ4NTU5MjYsImp0aSI6ImUyYWFkOGJlLWY5MWItNDBhMy1iODc0LTI4ZWQxMjdjMWMyZCIsImNsaWVudF9pZCI6IjdiZ3ZmbW43bjU4bWdoOTh0aTZ2ODQ2ZmU0IiwidXNlcm5hbWUiOiJmNTg5NWQ1NS0yMGI2LTQwNDYtOWY3Yi0wMjhiZmU0OWU0ZGYifQ.dlF4SNIUXDONXTd2xDo3RGZruQVG2fRvNe4CZJIvu0AA8nU3AxCbgI9baYKU0hKpHjuwBpx7LPb0Fh83DDd-HIWO4jQsdB06s3Xe3kbPBDbpqnG0krMM7r7FGvVXjMaSKek_7rlDtUKX-s1paQJTaNw1EJqOjw6NWT9cXmtHbbuUy_0xoe9KylEyq_GaiDfFTZ2EBOnjxwSB95DTl8npHrNWZAzLJIHYzjKVREgY2FiONz1iusNqK8uXFdU9hhWUgyllflgveuzQVJeykwAO-2SUZBGBljLL4wqyV0FbKsKCtdj2d8hnPJe4N2iH9VjXQU8OkWFDxzntj9IyLgDOdA"
-} ## ÅäÅ« ÁÙ¹Ù²Ş (\) ¾ÈµÇ´ÂÁö? ÇöÀç´Â ¾ÈµÊ 400¿¡·¯ ¹ß»ıÇÔ
+our_header = {
+    "X-Cupix-Auth" : "eyJraWQiOiJieDJJNzFWVFAxZkI1elk1eUVyZFFVMkRpSUJ0V3RoUG81WllhQnE0QkpZPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiZDY3ZmExNjAtODRmNS00N2RhLTlmYTgtYzMxM2U2NThkNjExIiwic3ViIjoiZjU4OTVkNTUtMjBiNi00MDQ2LTlmN2ItMDI4YmZlNDllNGRmIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTcwNDk0MjkyMSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfa3BQS1lzejhRIiwiZXhwIjoxNzA0OTQ2NTIxLCJpYXQiOjE3MDQ5NDI5MjEsImp0aSI6ImM5NTU5NmMwLWJlMWItNDg4Yi1hYmQwLTg0NzFjZGM3ZjM5ZiIsImNsaWVudF9pZCI6IjdiZ3ZmbW43bjU4bWdoOTh0aTZ2ODQ2ZmU0IiwidXNlcm5hbWUiOiJmNTg5NWQ1NS0yMGI2LTQwNDYtOWY3Yi0wMjhiZmU0OWU0ZGYifQ.PsX0uc-itB95KGdFER7dKd6tUnGftl6aFY8lZHZAhMCYrf_b6_QpFy7r9fO_XsD2BbFFYm7_99WMsQ9o-PNE58EUssDsl0qNeOmqeQZI8YPkULriwIZcc7M2DYQStvFkHVO2VyIexvityBVIBtUMRJgsazpeskWDdUwHi3tDW3MumEjy8BHnF1mrX4wpjlMLaAmiGB_PqDZJGqRvmNxXvM6wykrzSQHDiLN8jou4VU_mAVmxB5XXjBkII78sWQYELwGtLUlKuD6_wY1k-gZLglmdCwi_mn5l44p8jrCzrzvMiIAjas97mWlrheQwm9Fn0kSR6FFs0V8tOjrIM8LGBA"
+} ## ì¤„ë°”ê¿ˆ ì ìš© ì•ˆë˜ëŠ”ì§€? > '\' í•˜ë©´ 400ì—ëŸ¬ ë°œìƒ
 
-capture_id = input("capture id:")
-#capture_id = int(capture_id) # str > int Ã³¸®
+# capture_id = input("capture id:")
+capture_id = '76089'
+
 fields = 'id'
 
 get_clusters_api_url = api_url + "clusters" + "?capture_id=" + capture_id + "&fields=" + fields
 
 print('request url:', get_clusters_api_url)
 
-#res = requests.get(get_clusters_api_url) # response 401¿¡·¯ ¹ß»ı ÅäÅ«À» ¸ø ¹ŞÀ½
-res = requests.get(get_clusters_api_url, headers=headers)
+#res = requests.get(get_clusters_api_url) # response 401 headersë¥¼ ì™œ? ì´ë ‡ê²Œ í‘œê¸°í•˜ëŠ”ì§€?
+res = requests.get(get_clusters_api_url, headers=our_header)
 print()
 print(res)
 print()
 print(res.json())
+print()
 
-JSON_file = res.json()
-file_path = 'JSON_file.json'
-
-# Æú´õ »ı¼º
-dir_name_1 = capture_id
+# íŒŒì¼ ì´ë¦„ ì„¤ì •
+dir_name_1 = region + '_' + domain + '_' + capture_id
 wp_dir_name = pathlib.Path(dir_name_1)
 wp_dir_name.mkdir(parents=True, exist_ok=True)
 
+file_name = 'clusters.json'
+json_filepath = wp_dir_name.joinpath(file_name)
+
+print(json_filepath)
+print()
+clusters_json = res.json()
+
+with open(json_filepath,'w', encoding= 'cp949') as f:  
+    json.dump(clusters_json, f)
+
+
+
 destination_folder = wp_dir_name
 print(destination_folder)
-#JSON ÆÄÀÏ ÀúÀå
-with open(file_path,'w', encoding= 'cp949') as f: # encoding À¯´ÏÄÚµå, as f°¡ ¹ºÁö? 
-    json.dump(JSON_file, f)
+#JSON ì €ì¥
+
     
-#JSON ÆÄÀÏ ´Ù¸¥ Æú´õ·Î ÀÌµ¿
-shutil.move(file_path, destination_folder)
+##JSON ìƒì„±í•œ í´ë”ë¡œ ì´ë™
+#shutil.move(file_path, destination_folder)
