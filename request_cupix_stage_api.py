@@ -8,20 +8,32 @@ import json
 
 path = 'request_test'
 
-domain = 'noahtest'
-
-region = 'eu'
 
 #api_url= f'https://{region}.{domain}.stage.cupix.works/api/v1/'
 
 api_url= 'https://noahtest.stage.cupix.works/api/v1/'
 
+# region 설정
+if 'eu' in api_url:
+    region = 'eu'
+elif 'au' in api_url:
+    region = 'au'
+else:
+    region = 'us'
+
+# https:// 제거
+domain = api_url.replace('https://','')
+# '.'기준으로 나누기
+domain = domain.split('.')
+# domain 설정
+domain = domain[0]
+
 our_header = {
-    "X-Cupix-Auth" : "eyJraWQiOiJieDJJNzFWVFAxZkI1elk1eUVyZFFVMkRpSUJ0V3RoUG81WllhQnE0QkpZPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiZDY3ZmExNjAtODRmNS00N2RhLTlmYTgtYzMxM2U2NThkNjExIiwic3ViIjoiZjU4OTVkNTUtMjBiNi00MDQ2LTlmN2ItMDI4YmZlNDllNGRmIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTcwNDk0MjkyMSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfa3BQS1lzejhRIiwiZXhwIjoxNzA0OTQ2NTIxLCJpYXQiOjE3MDQ5NDI5MjEsImp0aSI6ImM5NTU5NmMwLWJlMWItNDg4Yi1hYmQwLTg0NzFjZGM3ZjM5ZiIsImNsaWVudF9pZCI6IjdiZ3ZmbW43bjU4bWdoOTh0aTZ2ODQ2ZmU0IiwidXNlcm5hbWUiOiJmNTg5NWQ1NS0yMGI2LTQwNDYtOWY3Yi0wMjhiZmU0OWU0ZGYifQ.PsX0uc-itB95KGdFER7dKd6tUnGftl6aFY8lZHZAhMCYrf_b6_QpFy7r9fO_XsD2BbFFYm7_99WMsQ9o-PNE58EUssDsl0qNeOmqeQZI8YPkULriwIZcc7M2DYQStvFkHVO2VyIexvityBVIBtUMRJgsazpeskWDdUwHi3tDW3MumEjy8BHnF1mrX4wpjlMLaAmiGB_PqDZJGqRvmNxXvM6wykrzSQHDiLN8jou4VU_mAVmxB5XXjBkII78sWQYELwGtLUlKuD6_wY1k-gZLglmdCwi_mn5l44p8jrCzrzvMiIAjas97mWlrheQwm9Fn0kSR6FFs0V8tOjrIM8LGBA"
+    "X-Cupix-Auth" : "eyJraWQiOiJieDJJNzFWVFAxZkI1elk1eUVyZFFVMkRpSUJ0V3RoUG81WllhQnE0QkpZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmNTg5NWQ1NS0yMGI2LTQwNDYtOWY3Yi0wMjhiZmU0OWU0ZGYiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtd2VzdC0yLmFtYXpvbmF3cy5jb21cL3VzLXdlc3QtMl9rcFBLWXN6OFEiLCJjbGllbnRfaWQiOiI3Ymd2Zm1uN241OG1naDk4dGk2djg0NmZlNCIsIm9yaWdpbl9qdGkiOiJmYjA4YmMwMy1jYzJiLTQxODYtODk4OS1mZDEzN2VlMDA2ZTUiLCJldmVudF9pZCI6IjE5MWEzMTJlLTI3N2EtNDY4Yy05ZmUwLTg0MzVjMjI1NDYyMyIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MDUyMzg4MzcsImV4cCI6MTcwNTI0MjQzNiwiaWF0IjoxNzA1MjM4ODM3LCJqdGkiOiJmZWEzY2FjNi1kNDE0LTQ1MmQtYTg4My1kYmRkZmM5MTc0NzciLCJ1c2VybmFtZSI6ImY1ODk1ZDU1LTIwYjYtNDA0Ni05ZjdiLTAyOGJmZTQ5ZTRkZiJ9.HMV2B8079ycEzZAUPoQI80B66_KoAF8bn77-uO8WxjcIlZrOsG3xcUsPhb5FbflZ-tEw-Nz2M4bgBh589o7dsGk1pj7qK5sbdQ1gV-wBN-l5rlcSyiASHSCu8zA5ZVBcvYXl5KjQAdNxo6uJpyeCNrb7SU8OiuU9yzyIb3Y8DOviWlhjic5XwrAdLyV1rJ5P_SweT7uoTUJ6K6WfhOtTxTy8BhWYJ7OR_W130Tb5fSf5jM0kuyZbLy12gZIeYKM7BWUCjviZJ0gSLkMgBadLCOTfInSkJF6KZilJzdXfeqjyb2v19px4nbBBd6L6nZCewDhGAtKPlW2h0stgiZ2Atg"
 } ## 줄바꿈 적용 안되는지? > '\' 하면 400에러 발생
 
-# capture_id = input("capture id:")
-capture_id = '76089'
+capture_id = input("capture id:")
+# capture_id = '76089'
 
 fields = 'id'
 
